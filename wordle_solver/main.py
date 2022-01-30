@@ -1,15 +1,23 @@
 import inquirer
-from fetch import get_solution
-import solver
 from blessed import Terminal
+
+import solver
+from fetch import get_solution
 
 term = Terminal()
 
-# ans = get_solution()
-# if ans:
-#     print(ans)
-# else:
-#     print("couldn't get")
+
+def ask_fetch():
+    print(term.clear)
+    choice = inquirer.list_input("Do you want to fetch today's solution from the website?", choices=['Yes', 'No'])
+    if choice == "Yes":
+        ans = get_solution()
+        if ans:
+            print(f"Today's word is: {ans}")
+        else:
+            print("Failed")
+    else:
+        return True
 
 
 def read_data():
@@ -37,7 +45,6 @@ def game():
     incorrect = []
 
     wordle = read_data()
-    print(term.clear)
     print("\nHere are 20 of the best words to choose...")
     print(list(solver.get_best_words(perfect, misplaced, incorrect, wordle, n=20)))
     print()
@@ -69,4 +76,5 @@ def game():
 
 
 if __name__ == "__main__":
-    game()
+    if ask_fetch():
+        game()

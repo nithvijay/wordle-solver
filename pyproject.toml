@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "wordle-solver"
+version = "0.1.0"
+description = ""
+authors = ["Nithin Vijayakumar <nithin2463@gmail.com>"]
+
+[tool.poetry.scripts]
+main = { path = "main.py" }
+
+[tool.poetry.dependencies]
+python = "^3.9"
+selenium = "^4.1.0"
+nltk = "^3.6.7"
+pandas = "^1.4.0"
+inquirer = "^2.9.1"
+autopep8 = "^1.6.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
